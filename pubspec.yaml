@@ -1,0 +1,12 @@
+version: 0.0.1
+name: scheduled_notifications
+description: A flutter plugin for scheduling notifications on Android.
+
+flutter:
+  plugin:
+    androidPackage: dk.kjeldsen.scheduled_notifications
+    pluginClass: ScheduledNotificationsPlugin
+
+dependencies:
+  flutter:
+    sdk: flutter
