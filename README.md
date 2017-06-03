@@ -6,7 +6,7 @@ A flutter plugin for scheduling notifications on Android.
 
 To use this plugin, add scheduled_notifications as a dependency in your pubspec.yaml file. Note you have to specify minSdkVersion on 23 in your AndroidManifest.xml to use this plugin.
 
-###Example
+### Example
 
 ```
 import 'package:scheduled_notifications/scheduled_notifications.dart';
