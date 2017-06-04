@@ -1,13 +1,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="dk.kjeldsen.scheduled_notifications"
-  android:versionCode="1"
-  android:versionName="0.0.1">
+          package="dk.kjeldsen.scheduled_notifications"
+          android:versionCode="1"
+          android:versionName="0.0.1">
 
-  <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="23" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-  <application>
-    <activity android:name=".NotificationActivity"/>
-    
-    <service android:name=".ScheduleNoticationsService" />
-  </application>
+    <uses-sdk
+        android:minSdkVersion="23"
+        android:targetSdkVersion="23"/>
+
+    <application>
+        <activity android:name=".NotificationActivity"/>
+
+        <receiver android:name=".OnRebootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".ScheduleNotificationsService"/>
+    </application>
 </manifest>

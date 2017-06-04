@@ -1,12 +1,7 @@
 package dk.kjeldsen.scheduled_notifications;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 
-import java.util.Calendar;
 import java.util.List;
 
 import io.flutter.plugin.common.MethodChannel;
@@ -36,17 +31,30 @@ public class ScheduledNotificationsPlugin implements MethodCallHandler {
 
     @Override
     public void onMethodCall(MethodCall call, Result result) {
+        List<Object> arguments = call.arguments();
         if (call.method.equals("scheduleNotification")) {
-            List<Object> arguments = call.arguments();
-            //result.success();
-            registerScheduledNotification((Long)arguments.get(0), (String)arguments.get(1), (String)arguments.get(2), (String)arguments.get(3));
+            ScheduleNotification scheduleNotification = scheduledNotification((Long)arguments.get(0), (String)arguments.get(1), (String)arguments.get(2), (String)arguments.get(3));
+            result.success(scheduleNotification.getNotificationId());
+        } else if(call.method.equals("unscheduleNotification")) {
+            unscheduledNotification((Integer)arguments.get(0));
+            result.success(null);
+        } else if(call.method.equals("hasScheduledNotification")) {
+            result.success(hasScheduledNotification((Integer)arguments.get(0)));
         } else {
             result.notImplemented();
         }
     }
 
-    private void registerScheduledNotification(Long triggerInMillis, String ticker, String contentTitle, String content) {
-        ScheduleNoficationsPersistentManager.instance().register(new ScheduleNotification(triggerInMillis, ticker, contentTitle, content), activity);
+    private ScheduleNotification scheduledNotification(Long triggerInMillis, String ticker, String contentTitle, String content) {
+        return ScheduleNotificationsManager.instance().register(new ScheduleNotification(triggerInMillis, ticker, contentTitle, content), activity);
+    }
+
+    private void unscheduledNotification(int notificationId) {
+        ScheduleNotificationsManager.instance().unregister(notificationId, activity);
+    }
+
+    private boolean hasScheduledNotification(int notificationId) {
+        return ScheduleNotificationsManager.instance().get(notificationId) != null;
     }
 
 }
