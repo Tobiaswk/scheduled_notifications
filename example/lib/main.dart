@@ -52,8 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
   }
 
-  _scheduleNotification() {
-    ScheduledNotifications.scheduleNotification(
+  _scheduleNotification() async {
+    int notificationId = await ScheduledNotifications.scheduleNotification(
         new DateTime.now().add(new Duration(seconds: 5)).millisecondsSinceEpoch,
         "Ticker text",
         "Content title",

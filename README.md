@@ -23,7 +23,7 @@ void main() {
 }
 
 _scheduleNotification() {
-      ScheduledNotifications.scheduleNotification(
+      int notificationId = await ScheduledNotifications.scheduleNotification(
           new DateTime.now().add(new Duration(seconds: 5)).millisecondsSinceEpoch,
           "Ticker text",
           "Content title",
