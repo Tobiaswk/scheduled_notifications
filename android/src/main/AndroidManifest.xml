@@ -10,8 +10,6 @@
         android:targetSdkVersion="23"/>
 
     <application>
-        <activity android:name=".NotificationActivity"/>
-
         <receiver android:name=".OnRebootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
