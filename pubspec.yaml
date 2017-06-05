@@ -1,6 +1,6 @@
 name: scheduled_notifications
 
-version: 0.0.1
+version: 0.0.2
 description: A flutter plugin for scheduling notifications on Android.
 author: Tobias Westergaard Kjeldsen<tobias@wkjeldsen.dk>
 homepage: https://github.com/Tobiaswk/scheduled_notifications

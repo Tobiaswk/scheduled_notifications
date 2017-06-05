@@ -1,3 +1,7 @@
-## [0.0.1] - 2017-04-20
+## [0.0.2] - 2017-06-05
+
+* Added missing classes.
+
+## [0.0.1] - 2017-06-04
 
 * Initial Open Source release.
