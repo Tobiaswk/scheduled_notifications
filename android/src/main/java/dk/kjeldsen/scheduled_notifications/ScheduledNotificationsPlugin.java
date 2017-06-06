@@ -46,15 +46,15 @@ public class ScheduledNotificationsPlugin implements MethodCallHandler {
     }
 
     private ScheduleNotification scheduledNotification(Long triggerInMillis, String ticker, String contentTitle, String content) {
-        return ScheduleNotificationsManager.instance().register(new ScheduleNotification(triggerInMillis, ticker, contentTitle, content), activity);
+        return ScheduleNotificationsManager.instance(activity).register(new ScheduleNotification(triggerInMillis, ticker, contentTitle, content), activity);
     }
 
     private void unscheduledNotification(int notificationId) {
-        ScheduleNotificationsManager.instance().unregister(notificationId, activity);
+        ScheduleNotificationsManager.instance(activity).unregister(notificationId, activity);
     }
 
     private boolean hasScheduledNotification(int notificationId) {
-        return ScheduleNotificationsManager.instance().get(notificationId) != null;
+        return ScheduleNotificationsManager.instance(activity).get(notificationId) != null;
     }
 
 }

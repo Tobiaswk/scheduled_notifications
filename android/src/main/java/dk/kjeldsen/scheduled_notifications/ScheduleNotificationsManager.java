@@ -26,7 +26,7 @@ public class ScheduleNotificationsManager {
         scheduledNotifications = new HashMap<>();
     }
 
-    public void save(Context context) {
+    private void save(Context context) {
         FileOutputStream fos;
         ObjectOutputStream oos = null;
         try {
@@ -51,7 +51,7 @@ public class ScheduleNotificationsManager {
 
     }
 
-    public void load(Context context) {
+    private void load(Context context) {
         scheduledNotifications.clear();
         FileInputStream fis;
         ObjectInputStream ois = null;
@@ -79,15 +79,17 @@ public class ScheduleNotificationsManager {
         }
     }
 
-    public void registerLoadedAlarms(Context ctx) {
+    public void registerLoaded(Context ctx) {
         for (ScheduleNotification scheduleNotification: scheduledNotifications.values()) {
             register(scheduleNotification, ctx);
         }
     }
 
-    public static ScheduleNotificationsManager instance() {
-        if (instance == null)
+    public static ScheduleNotificationsManager instance(Context ctx) {
+        if (instance == null) {
             instance = new ScheduleNotificationsManager();
+            instance.load(ctx);
+        }
         return instance;
     }
 

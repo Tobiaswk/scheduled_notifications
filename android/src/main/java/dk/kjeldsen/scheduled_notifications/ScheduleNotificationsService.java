@@ -34,10 +34,7 @@ public class ScheduleNotificationsService extends Service {
             String content = intent.getExtras().getString("content");
             int notificationId = intent.getExtras().getInt("notificationId");
 
-            ScheduleNotificationsManager.instance().load(
-                    getApplicationContext());
-
-            ScheduleNotification scheduleNotification = ScheduleNotificationsManager.instance().get(
+            ScheduleNotification scheduleNotification = ScheduleNotificationsManager.instance(this.getApplicationContext()).get(
                     notificationId);
 
             if (scheduleNotification != null) {
@@ -79,7 +76,7 @@ public class ScheduleNotificationsService extends Service {
 
             }
 
-            ScheduleNotificationsManager.instance().unregister(
+            ScheduleNotificationsManager.instance(this.getApplicationContext()).unregister(
                     notificationId,
                     this.getApplicationContext());
         }

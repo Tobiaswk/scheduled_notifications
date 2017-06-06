@@ -10,8 +10,7 @@ public class OnRebootReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent i) {
 		Log.d(this.getClass().getName(), "Reboot detected!");
-		ScheduleNotificationsManager.instance().load(context);
-		ScheduleNotificationsManager.instance().registerLoadedAlarms(context.getApplicationContext());
+		ScheduleNotificationsManager.instance(context).registerLoaded(context.getApplicationContext());
 	}
 
 }
