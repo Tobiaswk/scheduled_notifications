@@ -9,6 +9,7 @@ import android.util.Log;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -17,7 +18,7 @@ import java.util.HashMap;
 
 public class ScheduleNotificationsManager {
 
-    public static String ALARM_FILE = "scheduledNotifications";
+    private static String ALARM_FILE = "scheduledNotifications";
     private static ScheduleNotificationsManager instance;
 
     private HashMap<Integer, ScheduleNotification> scheduledNotifications;
@@ -65,9 +66,9 @@ public class ScheduleNotificationsManager {
                 scheduledNotifications.put(scheduleNotification.getNotificationId(), scheduleNotification);
                 Log.d(this.getClass().getName(), "Loaded scheduled notification!");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (FileNotFoundException e) {
+            Log.d(this.getClass().getName(), "No saved scheduled notifications!");
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             if (ois != null)

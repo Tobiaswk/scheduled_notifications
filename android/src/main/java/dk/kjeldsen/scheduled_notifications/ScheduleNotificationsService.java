@@ -84,12 +84,6 @@ public class ScheduleNotificationsService extends Service {
     }
 
     @Override
-    public boolean onUnbind(Intent intent) {
-        return super.onUnbind(intent);
-
-    }
-
-    @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
