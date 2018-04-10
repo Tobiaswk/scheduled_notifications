@@ -1,4 +1,4 @@
-## [1] - 2018-04-10
+## [1.0.0] - 2018-04-10
 
 * Added support for Dart 2.0 and newest Flutter beta 2.
 
