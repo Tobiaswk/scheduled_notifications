@@ -1,3 +1,7 @@
+## [1] - 2018-04-10
+
+* Added support for Dart 2.0 and newest Flutter beta 2.
+
 ## [0.0.4] - 2017-06-11
 
 * Catch FileNotFoundException.
